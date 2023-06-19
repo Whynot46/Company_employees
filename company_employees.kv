@@ -1,0 +1,64 @@
+<Main_screen>:
+    MDBoxLayout:
+        orientation: 'horizontal'
+        pos_hint: {'center_y': 1}
+        adaptive_height: True
+        MDLabel:
+            font_size : sp(40)
+            text : 'Сотрудники вашего предприятия'
+            halign:'center'
+            size_hint_y:.5
+            size_hint_x:.5
+    MDBoxLayout:
+        orientation: 'vertical'
+        pos_hint: {'center_y': 0.5}
+        size_hint_y:0.35
+        MDGridLayout:
+            cols:1
+            rows: 3
+            spacing: sp(15)
+            MDFillRoundFlatIconButton:
+                icon:'send-outline'
+                text: 'База данных'
+                on_release:
+                    root.manager.current = 'Data_base'
+                size_hint_x:0.5
+            MDFillRoundFlatIconButton:
+                icon:'send-outline'
+                text: 'Информация о сотруднике'
+                on_release:
+                    root.manager.current = 'Staff_info'
+                size_hint_x:0.5
+            MDGridLayout:
+                cols:2
+                rows: 1
+                spacing: sp(10)
+                MDFillRoundFlatIconButton:
+                    icon:'send-outline'
+                    text: 'Добавить сотрудника'
+                    on_release:
+                        root.add_people()
+                    size_hint_x:0.35
+                MDFillRoundFlatIconButton:
+                    icon:'send-outline'
+                    text: 'Удалить сотрудника'
+                    on_release:
+                        root.delete_people()
+                    size_hint_x:0.35
+
+<Staff_info>:
+    MDGridLayout:
+        cols: 1
+        rows: 2
+        MDTextField:
+            id: people_name_entry
+            hint_text: 'ФИО сотрудника'
+            helper_text: 'Для получения подробной информации о сотруднике введите его ФИО'
+            helper_text_mode: 'on_focus'
+        MDFillRoundFlatIconButton:
+            icon:'send-outline'
+            text: 'Найти'
+            on_release:
+                root.show_info()
+            size_hint_x:0.35
+    
