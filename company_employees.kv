@@ -13,7 +13,7 @@
     MDBottomAppBar:
         MDTopAppBar:
             title: "developed by Whynot46"
-            icon: "git"
+            icon: "github"
             type: "bottom"
             left_action_items: [["home-circle", lambda x: app.go_to_main()]]
             mode: "end"
@@ -27,13 +27,13 @@
             rows: 3
             spacing: sp(15)
             MDFillRoundFlatIconButton:
-                icon:'send-outline'
+                icon:'database-search'
                 text: 'База данных'
                 on_release:
                     root.manager.current = 'Data_base'
                 size_hint_x:0.5
             MDFillRoundFlatIconButton:
-                icon:'send-outline'
+                icon:'information'
                 text: 'Информация о сотруднике'
                 on_release:
                     root.manager.current = 'Staff_info'
@@ -43,13 +43,13 @@
                 rows: 1
                 spacing: sp(10)
                 MDFillRoundFlatIconButton:
-                    icon:'send-outline'
+                    icon:'plus-circle'
                     text: 'Добавить сотрудника'
                     on_release:
                         root.add_people()
                     size_hint_x:0.35
                 MDFillRoundFlatIconButton:
-                    icon:'send-outline'
+                    icon:'delete-circle'
                     text: 'Удалить сотрудника'
                     on_release:
                         root.delete_people()
@@ -70,7 +70,7 @@
     MDBottomAppBar:
         MDTopAppBar:
             title: "developed by Whynot46"
-            icon: "git"
+            icon: "github"
             type: "bottom"
             left_action_items: [["home-circle", lambda x: app.go_to_main()]]
             mode: "end"
@@ -88,9 +88,28 @@
             helper_text_mode: 'on_focus'
         MDFillRoundFlatIconButton:
             spacing: sp(50)
-            icon:'send-outline'
+            icon:'tab-search'
             text: 'Найти'
             on_release:
                 root.show_info()
             size_hint_x:0.35
-    
+
+<Data_base>:
+    MDBoxLayout:
+        orientation: 'horizontal'
+        pos_hint: {'center_y': 1}
+        adaptive_height: True
+        MDTopAppBar:
+            title: 'Сотрудники вашего предприятия'
+            size_hint_y: .6
+            anchor_title: "left"
+            elevation: 4
+            right_action_items: [["weather-night", lambda x: app.set_dark_theme()], ["white-balance-sunny", lambda x: app.set_light_theme()]]
+            font_size: sp(40)
+    MDBottomAppBar:
+        MDTopAppBar:
+            title: "developed by Whynot46"
+            icon: "github"
+            type: "bottom"
+            left_action_items: [["home-circle", lambda x: app.go_to_main()]]
+            mode: "end"

@@ -1,7 +1,7 @@
 import config
 from kivymd.app import MDApp
 from kivy.core.window import Window
-from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.uix.screenmanager import ScreenManager, Screen, FadeTransition 
 from kivy.core.window import Window
 from kivy.metrics import dp, sp
 from kivy.uix.popup import Popup
@@ -13,6 +13,7 @@ class Main_Screen(Screen):
     def add_people(self): pass
 
     def delete_people(self): pass
+
 
 class Data_base(Screen):
     pass
@@ -30,7 +31,7 @@ class Company_employees(MDApp):
         self.theme_cls.theme_style = "Dark"
         self.theme_cls.primary_palette = "Blue"
         self.load_kv('company_employees.kv')
-        self.SM = ScreenManager()
+        self.SM = ScreenManager(transition=FadeTransition())
         self.SM.add_widget(Main_Screen(name='Main_Screen'))
         self.SM.add_widget(Data_base(name='Data_base'))
         self.SM.add_widget(Staff_info(name='Staff_info'))
@@ -44,7 +45,6 @@ class Company_employees(MDApp):
 
     def go_to_main(self):
         self.SM.current = 'Main_Screen'
-
 
 
 if __name__ == '__main__':
