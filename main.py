@@ -7,10 +7,7 @@ from kivymd.uix.dialog.dialog import MDDialog
 from kivymd.uix.datatables.datatables import MDDataTable
 
 
-class Main_Screen(Screen):
-    def add_people(self): pass
-
-    def delete_people(self): pass
+class Main_Screen(Screen): pass
 
 
 class Data_base(Screen):

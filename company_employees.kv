@@ -25,7 +25,7 @@
         adaptive_height: True
         MDGridLayout:
             cols:1
-            rows: 3
+            rows: 2
             spacing: sp(15)
             MDFillRoundFlatIconButton:
                 icon:'database-search'
@@ -39,22 +39,6 @@
                 on_release:
                     root.manager.current = 'Staff_info'
                 size_hint_x:0.5
-            MDGridLayout:
-                cols:2
-                rows: 1
-                spacing: sp(10)
-                MDFillRoundFlatIconButton:
-                    icon:'plus-circle'
-                    text: 'Добавить сотрудника'
-                    on_release:
-                        root.add_people()
-                    size_hint_x:0.35
-                MDFillRoundFlatIconButton:
-                    icon:'delete-circle'
-                    text: 'Удалить сотрудника'
-                    on_release:
-                        root.delete_people()
-                    size_hint_x:0.35
 
 <Staff_info>:
     MDBoxLayout:
@@ -76,14 +60,14 @@
             left_action_items: [["home-circle", lambda x: app.go_to_main()]]
             mode: "end"
 
-    MDGridLayout:
+    MDBoxLayout:
+        orientation: 'vertical'
         adaptive_height: True
-        pos_hint: {'center_y': 0.5}
-        cols: 1
-        rows: 2
-        padding: [50, 50, 50, 50]
+        pos_hint: {'center_y': 0.8}
+        spacing: 10
         MDTextField:
             id: people_name_entry
+            font_size: sp(20)
             hint_text: 'ФИО сотрудника'
             helper_text: 'Для получения подробной информации о сотруднике введите его ФИО'
             helper_text_mode: 'on_focus'
@@ -93,7 +77,7 @@
             text: 'Найти'
             on_release:
                 root.show_info()
-            size_hint_x:0.35
+            size_hint_x:0.25
 
 <Data_base>:
     MDBoxLayout:
