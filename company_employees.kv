@@ -12,11 +12,12 @@
             font_size: sp(40)
     MDBottomAppBar:
         MDTopAppBar:
-            title: "developed by Whynot46"
+            title: 'https://github.com/Whynot46/Company_employees'
             icon: "github"
             type: "bottom"
             left_action_items: [["home-circle", lambda x: app.go_to_main()]]
             mode: "end"
+
     MDBoxLayout:
         orientation: 'vertical'
         pos_hint: {'center_y': 0.5}
@@ -69,7 +70,7 @@
             font_size: sp(40)
     MDBottomAppBar:
         MDTopAppBar:
-            title: "developed by Whynot46"
+            title: 'https://github.com/Whynot46/Company_employees'
             icon: "github"
             type: "bottom"
             left_action_items: [["home-circle", lambda x: app.go_to_main()]]
@@ -103,13 +104,17 @@
             title: 'Сотрудники вашего предприятия'
             size_hint_y: .6
             anchor_title: "left"
-            elevation: 4
-            right_action_items: [["weather-night", lambda x: app.set_dark_theme()], ["white-balance-sunny", lambda x: app.set_light_theme()]]
+            elevation: 1
+            right_action_items: [["reload", lambda x: root.update_db()],["weather-night", lambda x: app.set_dark_theme()], ["white-balance-sunny", lambda x: app.set_light_theme()]]
             font_size: sp(40)
     MDBottomAppBar:
         MDTopAppBar:
-            title: "developed by Whynot46"
+            title: 'https://github.com/Whynot46/Company_employees'
             icon: "github"
             type: "bottom"
             left_action_items: [["home-circle", lambda x: app.go_to_main()]]
             mode: "end"
+    
+    MDBoxLayout:
+        id: db_layout
+        pos_hint: {'center_y': 0.65}

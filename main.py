@@ -1,10 +1,8 @@
-import config
+from config import *
+from db.db import *
 from kivymd.app import MDApp
-from kivy.core.window import Window
 from kivy.uix.screenmanager import ScreenManager, Screen, FadeTransition 
-from kivy.core.window import Window
-from kivy.metrics import dp, sp
-from kivy.uix.popup import Popup
+from kivy.metrics import dp
 from kivymd.uix.dialog.dialog import MDDialog
 from kivymd.uix.datatables.datatables import MDDataTable
 
@@ -16,7 +14,37 @@ class Main_Screen(Screen):
 
 
 class Data_base(Screen):
-    pass
+    def on_enter(self):
+        self.update_db()
+
+    def update_db(self):
+        self.ids.db_layout.clear_widgets()
+        current_line=staff['K1'].value+2
+        print(current_line)
+        data_tables = MDDataTable(
+            size_hint=(1, 0.75),
+            check=True,
+            rows_num=8,
+            use_pagination=True,
+            padding=20,
+            column_data=[
+                ("ID", dp(40)),
+                ("ФИО", dp(40)),
+                ("Дата рождения", dp(40)),
+                ("Должность", dp(40)),
+                ("Квалификация", dp(40)),
+                ("Стаж", dp(40)),
+            ],
+            row_data=[
+                (staff[f'A{i}'].value, 
+                staff[f'B{i}'].value,
+                staff[f'C{i}'].value,
+                staff[f'D{i}'].value,
+                staff[f'E{i}'].value,
+                staff[f'F{i}'].value) for i in range(2, current_line)
+            ],
+        )
+        self.ids.db_layout.add_widget(data_tables)
 
 
 class Staff_info(Screen):
