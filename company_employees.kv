@@ -4,7 +4,7 @@
         pos_hint: {'center_y': 1}
         adaptive_height: True
         MDTopAppBar:
-            title: 'Сотрудники вашего предприятия'
+            title: 'Ваше предприятие'
             size_hint_y: .6
             anchor_title: "left"
             elevation: 4
@@ -25,20 +25,34 @@
         adaptive_height: True
         MDGridLayout:
             cols:1
-            rows: 2
+            rows: 3
             spacing: sp(15)
             MDFillRoundFlatIconButton:
                 icon:'database-search'
-                text: 'База данных'
+                text: 'Сотрудники'
                 on_release:
-                    root.manager.current = 'Data_base'
+                    root.manager.current = 'Staff_data_base'
                 size_hint_x:0.5
             MDFillRoundFlatIconButton:
                 icon:'information'
-                text: 'Информация о сотруднике'
+                text: 'Поиск сотрудника'
                 on_release:
                     root.manager.current = 'Staff_info'
                 size_hint_x:0.5
+
+            MDGridLayout:
+                cols: 2
+                rows: 1
+                MDFillRoundFlatIconButton:
+                    icon:'desktop-classic'
+                    text: 'Компьютеры'
+                    on_release: root.manager.current = 'Comp_data_base'
+                    size_hint_x:0.5
+                MDFillRoundFlatIconButton:
+                    icon:'printer'
+                    text: 'Принтеры / МФУ'
+                    on_release: root.manager.current = 'Printer_data_base'
+                    size_hint_x:0.5
 
 <Staff_info>:
     MDBoxLayout:
@@ -46,7 +60,7 @@
         pos_hint: {'center_y': 1}
         adaptive_height: True
         MDTopAppBar:
-            title: 'Сотрудники вашего предприятия'
+            title: 'Ваше предприятие'
             size_hint_y: .6
             anchor_title: "left"
             elevation: 4
@@ -79,7 +93,31 @@
                 root.show_info()
             size_hint_x:0.25
 
-<Data_base>:
+<Staff_data_base>:
+    MDBoxLayout:
+        orientation: 'horizontal'
+        pos_hint: {'center_y': 1}
+        adaptive_height: True
+        MDTopAppBar:
+            title: 'Ваше предприятие'
+            size_hint_y: .6
+            anchor_title: "left"
+            elevation: 1
+            right_action_items: [["reload", lambda x: root.update_db()],["weather-night", lambda x: app.set_dark_theme()], ["white-balance-sunny", lambda x: app.set_light_theme()]]
+            font_size: sp(40)
+    MDBottomAppBar:
+        MDTopAppBar:
+            title: 'https://github.com/Whynot46/Company_employees'
+            icon: "github"
+            type: "bottom"
+            left_action_items: [["home-circle", lambda x: app.go_to_main()]]
+            mode: "end"
+    
+    MDBoxLayout:
+        id: db_layout
+        pos_hint: {'center_y': 0.65}
+
+<Comp_data_base>:
     MDBoxLayout:
         orientation: 'horizontal'
         pos_hint: {'center_y': 1}
@@ -98,7 +136,31 @@
             type: "bottom"
             left_action_items: [["home-circle", lambda x: app.go_to_main()]]
             mode: "end"
-    
+
+    MDBoxLayout:
+        id: db_layout
+        pos_hint: {'center_y': 0.65}
+
+<Printer_data_base>:
+    MDBoxLayout:
+        orientation: 'horizontal'
+        pos_hint: {'center_y': 1}
+        adaptive_height: True
+        MDTopAppBar:
+            title: 'Сотрудники вашего предприятия'
+            size_hint_y: .6
+            anchor_title: "left"
+            elevation: 1
+            right_action_items: [["reload", lambda x: root.update_db()],["weather-night", lambda x: app.set_dark_theme()], ["white-balance-sunny", lambda x: app.set_light_theme()]]
+            font_size: sp(40)
+    MDBottomAppBar:
+        MDTopAppBar:
+            title: 'https://github.com/Whynot46/Company_employees'
+            icon: "github"
+            type: "bottom"
+            left_action_items: [["home-circle", lambda x: app.go_to_main()]]
+            mode: "end"
+
     MDBoxLayout:
         id: db_layout
         pos_hint: {'center_y': 0.65}
